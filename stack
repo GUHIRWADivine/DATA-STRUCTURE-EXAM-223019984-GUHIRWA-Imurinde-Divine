@@ -1,0 +1,55 @@
+class Stack:
+    def __init__(self, max_size):
+        self.stack = []
+        self.max_size = max_size
+
+    def push(self, order):
+        if len(self.stack) < self.max_size:
+            self.stack.append(order)
+            print(f"Order {order} pushed to stack.")
+        else:
+            print("Stack is full. Cannot push new order.")
+
+    def pop(self):
+        if len(self.stack) > 0:
+            order = self.stack.pop()
+            print(f"Order {order} popped from stack.")
+            return order
+        else:
+            print("Stack is empty. Cannot pop order.")
+            return None
+
+    def peek(self):
+        if len(self.stack) > 0:
+            return self.stack[-1]
+        else:
+            return None
+
+    def is_empty(self):
+        return len(self.stack) == 0
+
+    def is_full(self):
+        return len(self.stack) == self.max_size
+
+# Example usage:
+max_orders = 5
+order_stack = Stack(max_orders)
+
+# Push orders to the stack
+order_stack.push("Order1")
+order_stack.push("Order2")
+order_stack.push("Order3")
+order_stack.push("Order4")
+order_stack.push("Order5")
+order_stack.push("Order6")  # This should show stack is full
+
+# Pop orders from the stack
+order_stack.pop()
+order_stack.pop()
+
+# Peek at the top order
+print(f"Top order: {order_stack.peek()}")
+
+# Check if stack is empty or full
+print(f"Is stack empty? {order_stack.is_empty()}")
+print(f"Is stack full? {order_stack.is_full()}")

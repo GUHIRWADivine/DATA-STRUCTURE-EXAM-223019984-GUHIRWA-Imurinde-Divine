@@ -1,0 +1,106 @@
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, order):
+        self.stack.append(order)
+        print(f"Order {order['id']} pushed to stack.")
+
+    def pop(self):
+        if self.stack:
+            order = self.stack.pop()
+            print(f"Order {order['id']} popped from stack.")
+            return order
+        else:
+            print("Stack is empty. Cannot pop order.")
+            return None
+
+    def peek(self):
+        if self.stack:
+            return self.stack[-1]
+        else:
+            return None
+
+    def is_empty(self):
+        return len(self.stack) == 0
+
+    def size(self):
+        return len(self.stack)
+
+# Example usage:
+order_stack = Stack()
+
+# Dynamic order tracking
+order_stack.push({"id": 1, "items": ["apple", "banana"], "status": "pending"})
+order_stack.push({"id": 2, "items": ["carrot", "milk"], "status": "pending"})
+order_stack.push({"id": 3, "items": ["bread", "butter"], "status": "pending"})
+
+# Process the latest order
+latest_order = order_stack.pop()
+if latest_order:
+    latest_order['status'] = "delivered"
+    print(f"Order {latest_order['id']} delivered.")
+
+# Check the current top order
+top_order = order_stack.peek()
+if top_order:
+    print(f"Current top order: {top_order['id']} with status {top_order['status']}")
+
+# Check if stack is empty
+print(f"Is stack empty? {order_stack.is_empty()}")
+
+# Check the size of the stack
+print(f"Stack size: {order_stack.size()}")
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, order):
+        self.stack.append(order)
+        print(f"Order {order['id']} pushed to stack.")
+
+    def pop(self):
+        if self.stack:
+            order = self.stack.pop()
+            print(f"Order {order['id']} popped from stack.")
+            return order
+        else:
+            print("Stack is empty. Cannot pop order.")
+            return None
+
+    def peek(self):
+        if self.stack:
+            return self.stack[-1]
+        else:
+            return None
+
+    def is_empty(self):
+        return len(self.stack) == 0
+
+    def size(self):
+        return len(self.stack)
+
+# Example usage:
+order_stack = Stack()
+
+# Dynamic order tracking
+order_stack.push({"id": 1, "items": ["apple", "banana"], "status": "pending"})
+order_stack.push({"id": 2, "items": ["carrot", "milk"], "status": "pending"})
+order_stack.push({"id": 3, "items": ["bread", "butter"], "status": "pending"})
+
+# Process the latest order
+latest_order = order_stack.pop()
+if latest_order:
+    latest_order['status'] = "delivered"
+    print(f"Order {latest_order['id']} delivered.")
+
+# Check the current top order
+top_order = order_stack.peek()
+if top_order:
+    print(f"Current top order: {top_order['id']} with status {top_order['status']}")
+
+# Check if stack is empty
+print(f"Is stack empty? {order_stack.is_empty()}")
+
+# Check the size of the stack
+print(f"Stack size: {order_stack.size()}")

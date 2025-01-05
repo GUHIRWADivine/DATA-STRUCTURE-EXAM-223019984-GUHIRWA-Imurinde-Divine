@@ -1,0 +1,50 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def add(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = new_node
+
+    def delete(self, key):
+        temp = self.head
+        if temp is not None:
+            if temp.data == key:
+                self.head = temp.next
+                temp = None
+                return
+        while temp is not None:
+            if temp.data == key:
+                break
+            prev = temp
+            temp = temp.next
+        if temp is None:
+            return
+        prev.next = temp.next
+        temp = None
+
+    def display(self):
+        elems = []
+        current = self.head
+        while current:
+            elems.append(current.data)
+            current = current.next
+        return elems
+
+# Example usage
+inventory = LinkedList()
+inventory.add("Apples")
+inventory.add("Bananas")
+inventory.add("Oranges")
+print(inventory.display())  # ['Apples', 'Bananas', 'Oranges']

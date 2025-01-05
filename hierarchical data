@@ -1,0 +1,39 @@
+class TreeNode:
+    def __init__(self, name, data=None):
+        self.name = name
+        self.data = data
+        self.children = []
+
+    def add_child(self, child_node):
+        self.children.append(child_node)
+
+    def __repr__(self, level=0):
+        ret = "\t" * level + repr(self.name) + "\n"
+        for child in self.children:
+            ret += child.__repr__(level + 1)
+        return ret
+
+# Example usage:
+root = TreeNode("Grocery Store")
+
+# Adding categories
+fruits = TreeNode("Fruits")
+vegetables = TreeNode("Vegetables")
+dairy = TreeNode("Dairy")
+root.add_child(fruits)
+root.add_child(vegetables)
+root.add_child(dairy)
+
+# Adding subcategories and products
+apples = TreeNode("Apples", {"price": 1.0, "stock": 50})
+bananas = TreeNode("Bananas", {"price": 0.5, "stock": 100})
+carrots = TreeNode("Carrots", {"price": 0.2, "stock": 200})
+milk = TreeNode("Milk", {"price": 1.5, "stock": 30})
+
+fruits.add_child(apples)
+fruits.add_child(bananas)
+vegetables.add_child(carrots)
+dairy.add_child(milk)
+
+# Print the hierarchical structure
+print(root)

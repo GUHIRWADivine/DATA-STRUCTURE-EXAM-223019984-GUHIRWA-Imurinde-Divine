@@ -1,0 +1,123 @@
+def counting_sort(orders, max_priority):
+    # Create a count array to store the count of each priority
+    count = [0] * (max_priority + 1)
+
+    # Store the count of each priority
+    for order in orders:
+        count[order['priority']] += 1
+
+    # Update the count array to store the cumulative count
+    for i in range(1, len(count)):
+        count[i] += count[i - 1]
+
+    # Create an output array to store the sorted orders
+    output = [None] * len(orders)
+
+    # Place orders in the output array based on their priority
+    for order in reversed(orders):
+        priority = order['priority']
+        output[count[priority] - 1] = order
+        count[priority] -= 1
+
+    return output
+
+# Example usage:
+orders = [
+    {"id": 1, "items": ["apple", "banana"], "priority": 2},
+    {"id": 2, "items": ["carrot", "milk"], "priority": 1},
+    {"id": 3, "items": ["bread", "butter"], "priority": 3},
+    {"id": 4, "items": ["orange", "cheese"], "priority": 2},
+    {"id": 5, "items": ["fish", "meat"], "priority": 1},
+]
+
+# Assume the maximum priority is known
+max_priority = 3
+
+# Sort the orders based on priority
+sorted_orders = counting_sort(orders, max_priority)
+
+# Print the sorted orders
+for order in sorted_orders:
+    print(f"Order ID: {order['id']}, Priority: {order['priority']}, Items: {order['items']}")
+def counting_sort(orders, max_priority):
+    # Create a count array to store the count of each priority
+    count = [0] * (max_priority + 1)
+
+    # Store the count of each priority
+    for order in orders:
+        count[order['priority']] += 1
+
+    # Update the count array to store the cumulative count
+    for i in range(1, len(count)):
+        count[i] += count[i - 1]
+
+    # Create an output array to store the sorted orders
+    output = [None] * len(orders)
+
+    # Place orders in the output array based on their priority
+    for order in reversed(orders):
+        priority = order['priority']
+        output[count[priority] - 1] = order
+        count[priority] -= 1
+
+    return output
+
+# Example usage:
+orders = [
+    {"id": 1, "items": ["apple", "banana"], "priority": 2},
+    {"id": 2, "items": ["carrot", "milk"], "priority": 1},
+    {"id": 3, "items": ["bread", "butter"], "priority": 3},
+    {"id": 4, "items": ["orange", "cheese"], "priority": 2},
+    {"id": 5, "items": ["fish", "meat"], "priority": 1},
+]
+
+# Assume the maximum priority is known
+max_priority = 3
+
+# Sort the orders based on priority
+sorted_orders = counting_sort(orders, max_priority)
+
+# Print the sorted orders
+for order in sorted_orders:
+    print(f"Order ID: {order['id']}, Priority: {order['priority']}, Items: {order['items']}")
+def counting_sort(orders, max_priority):
+    # Create a count array to store the count of each priority
+    count = [0] * (max_priority + 1)
+
+    # Store the count of each priority
+    for order in orders:
+        count[order['priority']] += 1
+
+    # Update the count array to store the cumulative count
+    for i in range(1, len(count)):
+        count[i] += count[i - 1]
+
+    # Create an output array to store the sorted orders
+    output = [None] * len(orders)
+
+    # Place orders in the output array based on their priority
+    for order in reversed(orders):
+        priority = order['priority']
+        output[count[priority] - 1] = order
+        count[priority] -= 1
+
+    return output
+
+# Example usage:
+orders = [
+    {"id": 1, "items": ["apple", "banana"], "priority": 2},
+    {"id": 2, "items": ["carrot", "milk"], "priority": 1},
+    {"id": 3, "items": ["bread", "butter"], "priority": 3},
+    {"id": 4, "items": ["orange", "cheese"], "priority": 2},
+    {"id": 5, "items": ["fish", "meat"], "priority": 1},
+]
+
+# Assume the maximum priority is known
+max_priority = 3
+
+# Sort the orders based on priority
+sorted_orders = counting_sort(orders, max_priority)
+
+# Print the sorted orders
+for order in sorted_orders:
+    print(f"Order ID: {order['id']}, Priority: {order['priority']}, Items: {order['items']}")

@@ -1,0 +1,30 @@
+class Deque:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return self.items == []
+
+    def add_front(self, item):
+        self.items.append(item)
+
+    def add_rear(self, item):
+        self.items.insert(0, item)
+
+    def remove_front(self):
+        return self.items.pop()
+
+    def remove_rear(self):
+        return self.items.pop(0)
+
+    def size(self):
+        return len(self.items)
+
+# Example usage
+orders = Deque()
+orders.add_rear("Order 1")
+orders.add_rear("Order 2")
+orders.add_front("Order 3")
+print(orders.items)  # ['Order 3', 'Order 1', 'Order 2']
+orders.remove_front()
+print(orders.items)  # ['Order 3', 'Order 1']
