@@ -1,0 +1,349 @@
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.3.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create DATABASE client_master;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use client_master;
+Database changed
+mysql> create table client_master(clientno,name,address, city, state,bal_due);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',name,address, city, state,bal_due)' at line 1
+mysql> create table client_master( clientno int, name varchar(250), address varchar(150), city varchar(150), state varchar(140), bal_due varchar (120));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into client_master value('001','diane','huye','kigali','rwanda','5000');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into client_master value('002','nezerwa','ruheru','nyanza','rwanda','8000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into client_master value('003','mwiza','rwaza','bugesera','rwanda','6000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into client_master value('004','birako','ruyenzi','nyabihu','rwanda','4000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into client_master value('005','kariza','ngoma','nyaruguru','rwanda','3000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from client_master;
++----------+---------+---------+-----------+--------+---------+
+| clientno | name    | address | city      | state  | bal_due |
++----------+---------+---------+-----------+--------+---------+
+|        1 | diane   | huye    | kigali    | rwanda | 5000    |
+|        2 | nezerwa | ruheru  | nyanza    | rwanda | 8000    |
+|        3 | mwiza   | rwaza   | bugesera  | rwanda | 6000    |
+|        4 | birako  | ruyenzi | nyabihu   | rwanda | 4000    |
+|        5 | kariza  | ngoma   | nyaruguru | rwanda | 3000    |
++----------+---------+---------+-----------+--------+---------+
+5 rows in set (0.02 sec)
+
+mysql> select from client_master  where bal_due>5000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from client_master  where bal_due>5000' at line 1
+mysql> alter table client_master modify client no"c123"to R.s 5100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no"c123"to R.s 5100' at line 1
+mysql> alter table client_master modify client no "c123" to R.s 5100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no "c123" to R.s 5100' at line 1
+mysql> select from client_master  whose bal_due>5000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from client_master  whose bal_due>5000' at line 1
+mysql> alter table client_master modify clientno "1" to R.s 5100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"1" to R.s 5100' at line 1
+mysql> alter table client_master modify clientno '1' to R.s 5100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''1' to R.s 5100' at line 1
+mysql> alter table client_master modify clientno = '1' to R.s 5100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= '1' to R.s 5100' at line 1
+mysql> create table department( regno int, f_name varchar(250), address varchar(150), gender varchar(150), idno varchar(140), shool varchar (120));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into client_master value('004','b');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>
+mysql> insert into department value('2230132','mwiza lidie', 'vup','001','business');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into department value('2230132','mwiza lidie', 'vup','female','001','business');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department value('2230325','uwayo berte', 'bt','male','002','cass');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department value('2230567','nezerwa creo', 'cp','male','003','cavm');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department value('2230867','teta berra', 'bc','female','004','cmhs');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department value('2230098','mutesa bra', 'tr','male','005','education');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> selact*from department;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selact*from department' at line 1
+mysql> select*from department;
++---------+--------------+---------+--------+------+-----------+
+| regno   | f_name       | address | gender | idno | shool     |
++---------+--------------+---------+--------+------+-----------+
+| 2230132 | mwiza lidie  | vup     | female | 001  | business  |
+| 2230325 | uwayo berte  | bt      | male   | 002  | cass      |
+| 2230567 | nezerwa creo | cp      | male   | 003  | cavm      |
+| 2230867 | teta berra   | bc      | female | 004  | cmhs      |
+| 2230098 | mutesa bra   | tr      | male   | 005  | education |
++---------+--------------+---------+--------+------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> create table employees ( regno int, f_name varchar(250), address varchar(150), gender varchar(150), email_id varchar(140);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table employees ( regno int, f_name varchar(250), address varchar(150), 'gender' varchar(150), email_id varchar(140);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''gender' varchar(150), email_id varchar(140)' at line 1
+mysql> create table employees ( regno int, f_name varchar(250), address varchar(150), gender varchar(150), email_id varchar(140);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table employees ( regno int, f_name varchar(250), gender varchar(150), idno varchar(140);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table employees ( regno int, f_name varchar(250), gender varchar(150), idno varchar(140));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into table employees('001','divine','female','078908967');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employees('001','divine','female','078908967')' at line 1
+mysql> insert into table employees value ('001','divine','female','078908967');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employees value ('001','divine','female','078908967')' at line 1
+mysql> insert into table employees value('001','divine','female','078908967');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table employees value('001','divine','female','078908967')' at line 1
+mysql> insert into employees value('001','divine','female','078908967');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees value('002','eddy','male','074532197');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employees value('003','kazungu','male','074532123');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employees value('004','humura','female','074513793');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employees value('005','ishimwe','female','079000003');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from employees;
++-------+---------+--------+-----------+
+| regno | f_name  | gender | idno      |
++-------+---------+--------+-----------+
+|     1 | divine  | female | 078908967 |
+|     2 | eddy    | male   | 074532197 |
+|     3 | kazungu | male   | 074532123 |
+|     4 | humura  | female | 074513793 |
+|     5 | ishimwe | female | 079000003 |
++-------+---------+--------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> desc employees;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| regno  | int          | YES  |     | NULL    |       |
+| f_name | varchar(250) | YES  |     | NULL    |       |
+| gender | varchar(150) | YES  |     | NULL    |       |
+| idno   | varchar(140) | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+4 rows in set (0.04 sec)
+
+mysql> create table student(studentid varchar(5),fullnames varchar(25),gender varchar(6),age int(2),department varchar(30));
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+mysql> insert into student value('1','ashimwe','female', 18, 'bit');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student value('2','bajeneza','male', 19, 'accounting');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student value('3','kubwayo','male', 20, 'finance');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student value('4','uwawe','female', 21, 'medecine');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student value('5','neza','female', 17, 'pychrology');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from student;
++-----------+-----------+--------+------+------------+
+| studentid | fullnames | gender | age  | department |
++-----------+-----------+--------+------+------------+
+| 1         | ashimwe   | female |   18 | bit        |
+| 2         | bajeneza  | male   |   19 | accounting |
+| 3         | kubwayo   | male   |   20 | finance    |
+| 4         | uwawe     | female |   21 | medecine   |
+| 5         | neza      | female |   17 | pychrology |
++-----------+-----------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select female from student;
+ERROR 1054 (42S22): Unknown column 'female' in 'field list'
+mysql> select from student where gender=female
+    -> select from student where gender=female;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from student where gender=female
+select from student where gender=female' at line 1
+mysql> select from student where gender=female;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from student where gender=female' at line 1
+mysql> select set from student where gender=female;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'set from student where gender=female' at line 1
+mysql> select distinct female from student;
+ERROR 1054 (42S22): Unknown column 'female' in 'field list'
+mysql> select distinct gender from student where gender= female;
+ERROR 1054 (42S22): Unknown column 'female' in 'where clause'
+mysql> select distinct gender from student;
++--------+
+| gender |
++--------+
+| female |
+| male   |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select distinct between male and female from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between male and female from student' at line 1
+mysql> select distinct between male and female from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between male and female from student' at line 1
+mysql> create table EMPLOYEES(employee_id, first_name, last_name,Email, phone_number,hire_date, job_id,salary, commission_pct,manager_id,department_id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', first_name, last_name,Email, phone_number,hire_date, job_id,salary, commission' at line 1
+mysql> create table EMPLOYEES(  employee_id int,  first_name varchar(25),   last_name varchar(25),  Email varchar(10),  phone_number decimal(15),  hire_date decimal(10),  job_id int,  salary int,  commission_pct decimal(32) ,  manager_id int ,  department_id varchar(23));
+ERROR 1050 (42S01): Table 'employees' already exists
+mysql> create table divine (  employee_id int,  first_name varchar(25),   last_name varchar(25),  Email varchar(10),  phone_number decimal(15),  hire_date decimal(10),  job_id int,  salary int,  commission_pct decimal(32) ,  manager_id int ,  department_id varchar(23));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into divine value('001','baho','greace','greace@','0789896534',1/1/2000,000.123,40000,2000,32436,0008);
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> insert into divine value('002','berwa','breese','breese@','0781112234',1/1/2000,000.123,40000,2000,32436,0008);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into divine value('002','rutwe','pascal','pascal@','0781112234',1/1/2000,000.123,40000,2000,32436,0008);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into divine value('003','berwa','celine','celine@','0781112234',1/1/2000,000.123,40000,2000,32436,0008);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into divine value('004','sezerano','aurore','aurore@','0789023213',1/1/2000,000.123,40000,2000,32436,0008);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> select*from divine;
++-------------+------------+-----------+---------+--------------+-----------+--------+--------+----------------+------------+---------------+
+| employee_id | first_name | last_name | Email   | phone_number | hire_date | job_id | salary | commission_pct | manager_id | department_id |
++-------------+------------+-----------+---------+--------------+-----------+--------+--------+----------------+------------+---------------+
+|           1 | baho       | greace    | greace@ |    789896534 |         0 |      0 |  40000 |           2000 |      32436 | 8             |
+|           2 | berwa      | breese    | breese@ |    781112234 |         0 |      0 |  40000 |           2000 |      32436 | 8             |
+|           2 | rutwe      | pascal    | pascal@ |    781112234 |         0 |      0 |  40000 |           2000 |      32436 | 8             |
+|           3 | berwa      | celine    | celine@ |    781112234 |         0 |      0 |  40000 |           2000 |      32436 | 8             |
+|           4 | sezerano   | aurore    | aurore@ |    789023213 |         0 |      0 |  40000 |           2000 |      32436 | 8             |
++-------------+------------+-----------+---------+--------------+-----------+--------+--------+----------------+------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table divine add costomer id varchar(10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id varchar(10)' at line 1
+mysql> desc divine;
++----------------+---------------+------+-----+---------+-------+
+| Field          | Type          | Null | Key | Default | Extra |
++----------------+---------------+------+-----+---------+-------+
+| employee_id    | int           | YES  |     | NULL    |       |
+| first_name     | varchar(25)   | YES  |     | NULL    |       |
+| last_name      | varchar(25)   | YES  |     | NULL    |       |
+| Email          | varchar(10)   | YES  |     | NULL    |       |
+| phone_number   | decimal(15,0) | YES  |     | NULL    |       |
+| hire_date      | decimal(10,0) | YES  |     | NULL    |       |
+| job_id         | int           | YES  |     | NULL    |       |
+| salary         | int           | YES  |     | NULL    |       |
+| commission_pct | decimal(32,0) | YES  |     | NULL    |       |
+| manager_id     | int           | YES  |     | NULL    |       |
+| department_id  | varchar(23)   | YES  |     | NULL    |       |
++----------------+---------------+------+-----+---------+-------+
+11 rows in set (0.01 sec)
+
+mysql> create table sales table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create sales table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sales table' at line 1
+mysql> create table sales table(sales no int, salesname varchar(25),branch varchar(25), salesamount varchar(20),DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(sales no int, salesname varchar(25),branch varchar(25), salesamount varchar(20)' at line 1
+mysql> create table sales table(  salesno int,  salesname varchar(25),  branch varchar(25),  salesamount varchar(20),  DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(  salesno int,  salesname varchar(25),  branch varchar(25),  salesamount varcha' at line 1
+mysql> create table sales table(  sales no_int,  sales_name varchar(25),  branch varchar(25),  sales_amount varchar(20),  DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(  sales no_int,  sales_name varchar(25),  branch varchar(25),  sales_amount var' at line 1
+mysql> select distinct phone_number from divine;
++--------------+
+| phone_number |
++--------------+
+|    789896534 |
+|    781112234 |
+|    789023213 |
++--------------+
+3 rows in set (0.00 sec)
+
+mysql> select distinct salary from divine;
++--------+
+| salary |
++--------+
+|  40000 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select distinct employee_id from divine;
++-------------+
+| employee_id |
++-------------+
+|           1 |
+|           2 |
+|           3 |
+|           4 |
++-------------+
+4 rows in set (0.00 sec)
+
+mysql> select distinct first name from divine;
+ERROR 1054 (42S22): Unknown column 'first' in 'field list'
+mysql> select distinct first_name from divine;
++------------+
+| first_name |
++------------+
+| baho       |
+| berwa      |
+| rutwe      |
+| sezerano   |
++------------+
+4 rows in set (0.00 sec)
+
+mysql> select distinct last_name from divine;
++-----------+
+| last_name |
++-----------+
+| greace    |
+| breese    |
+| pascal    |
+| celine    |
+| aurore    |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> create table sales table(  sales_no int,  sales_name varchar(25),  branch varchar(25),  sales_amount varchar(20),  DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(  sales_no int,  sales_name varchar(25),  branch varchar(25),  sales_amount var' at line 1
+mysql> create table sales table(  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  sales_amount int(15),  DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  sales_amount' at line 1
+mysql> create sales table(  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  sales_amount int(15),  DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sales table(  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  s' at line 1
+mysql> create table sales table( sales_no int(20), sales_name varchar(25), branch char(10), sales_amount int(15),  DOB decimal(20));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '( sales_no int(20), sales_name varchar(25), branch char(10), sales_amount int(15' at line 1
+mysql> ^Ceate table sales table( sales_no int(20), sales_name varchar(25), branch char(10), sales_amount int(15),  DOB decimal(20));
+mysql> ^C
+mysql> create sales table(  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  sales_amount int(15),  DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sales table(  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  s' at line 1
+mysql> create sales table (  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  sales_amount int(15),  DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sales table (  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  ' at line 1
+mysql> create table guhirwa sale (  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  sales_amount int(15),  DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sale (  sales_no int(20),  sales_name varchar(25),  branch varchar(25),  sales_a' at line 1
+mysql> create table guhirwa sale (  sales_no decimal(20),  sales_name varchar(25),  branch varchar(25),  sales_amount int(15), DOB int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sale (  sales_no decimal(20),  sales_name varchar(25),  branch varchar
