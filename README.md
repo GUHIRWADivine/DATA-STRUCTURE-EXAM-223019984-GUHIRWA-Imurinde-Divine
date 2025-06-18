@@ -1,6 +1,4 @@
-Here is a **complete, GitHub-ready `README.md` file** tailored for your **University Course Enrollment System** — implemented in **C++ OOP using a single file (main.cpp)**.
-
-This README assumes your project is a **single-file C++ program**, and it explains everything needed to understand, build, and run it.
+**university course enrollment**
 
 ---
 
